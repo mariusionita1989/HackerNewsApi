@@ -1,5 +1,5 @@
 ﻿using HackerNewsApi.Config;
-using HackerNewsApi.Models;
+using HackerNewsApi.Dto;
 using HackerNewsApi.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
@@ -27,7 +27,7 @@ namespace HackerNewsApi.Controllers
         {
             try
             {
-                if (!_memoryCache.TryGetValue("BestStoriesList", out List<Story>? storiesList))
+                if (!_memoryCache.TryGetValue("BestStoriesList", out List<StoryDto>? storiesList))
                 {
                     var bestStoryIds = await _hackerNewsService.GetBestStoryIdsAsync();
                     if (bestStoryIds != null)

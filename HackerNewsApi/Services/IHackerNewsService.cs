@@ -1,4 +1,5 @@
-﻿using HackerNewsApi.Models;
+﻿using HackerNewsApi.Dto;
+using HackerNewsApi.Models;
 
 namespace HackerNewsApi.Services
 {
@@ -6,6 +7,6 @@ namespace HackerNewsApi.Services
     {
         Task<Story?> GetStoryAsync(int storyId);
         Task<List<int>?> GetBestStoryIdsAsync();
-        Task<List<Story>> GetStoriesAsync(List<int> storyIds);
+        Task<List<StoryDto>> GetStoriesAsync(List<int> storyIds);
     }
 }

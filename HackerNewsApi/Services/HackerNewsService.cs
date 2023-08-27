@@ -1,4 +1,6 @@
 ﻿using HackerNewsApi.Config;
+using HackerNewsApi.Dto;
+using HackerNewsApi.Mapper;
 using HackerNewsApi.Models;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
@@ -32,12 +34,15 @@ namespace HackerNewsApi.Services
             return JsonConvert.DeserializeObject<List<int>?>(response);
         }
 
-        public async Task<List<Story?>> GetStoriesAsync(List<int> storyIds)
+        public async Task<List<StoryDto>> GetStoriesAsync(List<int> storyIds)
         {
+            List<StoryDto> result = new List<StoryDto>();
             var tasks = storyIds.Select(GetStoryAsync);
             var stories = await Task.WhenAll(tasks);
             var list = stories.Where(story => story != null).ToList();
-            return list;
+            if(list!= null)
+                result = StoryToStoryDto.ConvertToStoryDtos(list);
+            return result;
         }
     }
 }
