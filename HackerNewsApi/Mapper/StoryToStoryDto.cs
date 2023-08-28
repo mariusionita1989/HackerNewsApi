@@ -16,6 +16,7 @@ namespace HackerNewsApi.Mapper
                     {
                         StoryDto storyDto = new StoryDto
                         {
+                            Id = story.Id,
                             Title = story.Title,
                             PostedBy = story.By,
                             Score = story.Score,
