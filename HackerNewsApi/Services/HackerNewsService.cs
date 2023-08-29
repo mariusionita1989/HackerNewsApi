@@ -30,8 +30,8 @@ namespace HackerNewsApi.Services
 
         public async Task<List<int>?> GetBestStoryIdsAsync()
         {
-            var response = await _httpClient.GetStringAsync(_apiConfiguration.BestStoriesUrl);
-            return JsonConvert.DeserializeObject<List<int>?>(response);
+            var response = await _httpClient.GetStringAsync(_apiConfiguration.BestStoriesUrl); // get ids
+            return JsonConvert.DeserializeObject<List<int>?>(response);  
         }
 
         public async Task<List<StoryDto>> GetStoriesAsync(List<int> storyIds)
