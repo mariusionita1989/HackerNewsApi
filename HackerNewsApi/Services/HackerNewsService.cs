@@ -42,7 +42,7 @@ namespace HackerNewsApi.Services
             var list = stories.Where(story => story != null).ToList();
             if(list!= null)
                 result = StoryToStoryDto.ConvertToStoryDtos(list);
-            return result.OrderBy(t=>t.DateTime).ToList();
+            return result.OrderBy(t=>t.DateTime);
         }
     }
 }
